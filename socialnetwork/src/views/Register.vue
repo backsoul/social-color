@@ -13,8 +13,12 @@
     "
   >
     <div class="w-full h-full flex flex-col justify-center items-center">
-      <h1 class="text-dark text-2xl font-semibold">Iniciar Sesión</h1>
+      <h1 class="text-dark text-2xl font-semibold">Registro</h1>
       <form action="POST" class="grid col-2 gap-5 mt-5">
+        <div class="flex justify-between">
+          <label class="font-bold text-dark_ligth">Ingresa un color:</label>
+          <input type="color" v-model="color" />
+        </div>
         <input
           type="email"
           class="p-4 rounded outline-none font-bold text-center"
@@ -46,10 +50,10 @@
         </button>
       </form>
       <button
-        @click="$router.push('register')"
+        @click="$router.push('login')"
         class="text-primary font-bold p-3 focus:outline-none"
       >
-        registrarte
+        inicia sesión
       </button>
     </div>
   </div>
@@ -60,15 +64,18 @@ import { defineComponent } from "vue";
 interface User {
   email: string;
   password: string | number;
+  color: string;
 }
 export default defineComponent({
-  name: "Login",
+  name: "Register",
   data() {
     const user = {} as User;
-    const { email, password } = user;
+    let { email, password, color } = user;
+    color = "#00FF00";
     return {
       email,
       password,
+      color,
     };
   },
 });
